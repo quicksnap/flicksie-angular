@@ -3,3 +3,4 @@ describe 'Laa Dee', () ->
   it 'does stuff', () ->
     browser().navigateTo('/')
     browser().reload()
+

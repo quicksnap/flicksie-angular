@@ -1,36 +1,19 @@
-<div class="header">
-  <ul class="nav nav-pills pull-right">
-    <li class="active"><a ng-href="#">Home</a></li>
-    <li><a ng-href="#">About</a></li>
-    <li><a ng-href="#">Contact</a></li>
-  </ul>
-  <h3 class="text-muted">flicksie angular</h3>
+<div class="page-header">
+  <h1>Flicksie! <small>Just a Flickr gallery app.</small></h1>
 </div>
+<div class="row">
+  <div ng-controller="PhotoListCtrl" class="col-md-4">
+    <div ng-if="isLoading()">
+      Loading from Flickr.. please wait.
+    </div>
+    <div class="list-group">
+      <a class="list-group-item" ng-repeat="photo in model.photos" ng-click="selectPhoto(photo)" ng-class="{'active': photo.id==getSelectedId()}">
+        {{photo.title || 'No Title'}}
+      </a>
+    </div>
+  </div>
 
-<div class="jumbotron">
-  <h1>'Allo, 'Allo!</h1>
-  <p class="lead">
-    <img src="images/yeoman.png" alt="I'm Yeoman"><br>
-    Always a pleasure scaffolding your apps.
-  </p>
-  <p><a class="btn btn-lg btn-success" ng-href="#">Splendid!</a></p>
-</div>
-
-<div class="row marketing">
-  <h4>HTML5 Boilerplate</h4>
-  <p>
-    HTML5 Boilerplate is a professional front-end template for building fast, robust, and adaptable web apps or sites.
-  </p>
-
-  <h4>AngularJS</h4>
-  <p>
-    AngularJS is a toolset for building the framework most suited to your application development.
-  </p>
-
-  <h4>Karma</h4>
-  <p>Spectacular Test Runner for JavaScript.</p>
-</div>
-
-<div class="footer">
-  <p>♥ from the Yeoman team</p>
+  <div class="photo-viewer col-md-8" ng-controller="PhotoViewerCtrl">
+    <img src="{{getActivePhotoUrl()}}">
+  </div>
 </div>
