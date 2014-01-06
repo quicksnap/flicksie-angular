@@ -7,6 +7,25 @@
     border: 1px solid blue;
 }
 
+.photo-viewer img { transition: opacity 0.5s; }
+.img-loading img { opacity: 0; }
+.photo-viewer .load-wrapper {
+    position: relative;
+    min-height: 200;
+    min-width: 200;
+}
+
+.photo-viewer .load-wrapper.img-loading {
+    &:after {
+        content: "Loading...";
+        position: absolute;
+        margin: auto;
+        width: 100%;
+        text-align: center;
+        top:0; right: 0; top: 0; bottom: 0;
+    }
+}
+
 button { outline: none; }
 
 .browsehappy {
